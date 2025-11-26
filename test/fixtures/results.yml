@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  driver: one
+  team: one
+  race_edition: one
+  position: 1
+  points: 1
+  best_lap_time: MyString
+
+two:
+  driver: two
+  team: two
+  race_edition: two
+  position: 1
+  points: 1
+  best_lap_time: MyString
