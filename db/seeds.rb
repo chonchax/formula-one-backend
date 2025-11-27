@@ -73,7 +73,8 @@ drivers_data.each do |attrs|
     last_name: attrs[:last_name],
     nationality: attrs[:nationality],
     number: attrs[:number],
-    team: teams[attrs[:team_name]]
+    team: teams[attrs[:team_name]],
+    points: attrs[:points]
   )
   puts "Driver #{attrs[:first_name]} #{attrs[:last_name]} created."
 end
