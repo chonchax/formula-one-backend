@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      resources :drivers, only: [:create, :index]
+      resources :drivers, only: [ :create, :index ]
     end
   end
 end
