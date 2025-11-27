@@ -1,3 +1,3 @@
 class Race < ApplicationRecord
-  belongs_to :all_time_best_driver
+  has_many :race_editions, dependent: :destroy
 end
