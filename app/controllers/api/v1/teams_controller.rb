@@ -14,6 +14,6 @@ class Api::V1::TeamsController < ApplicationController
         total_pages: pagy_teams.pages,
         total_count: pagy_teams.count
       }
-    }
+    }, status: :ok
   end
 end
