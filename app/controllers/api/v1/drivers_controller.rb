@@ -32,4 +32,36 @@ class Api::V1::DriversController < ApplicationController
       }
     }, status: :ok
   end
+
+  def create
+    driver = Driver.new(driver_params)
+
+    if driver.save
+      render json: DriverBlueprint.render_as_hash(driver), status: :created
+    else
+      render json: { error: "Unprocessable Entity", messages: driver.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    driver = Driver.find(params[:id])
+
+    if driver.update(driver_params)
+      render json: DriverBlueprint.render_as_hash(driver), status: :ok
+    else
+      render json: { error: "Unprocessable Entity", messages: driver.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    driver = Driver.find(params[:id])
+    driver.destroy
+    head :no_content
+  end
+
+  private
+
+  def driver_params
+    params.permit(:first_name, :last_name, :team_id, :nationality, :number, :points)
+  end
 end
