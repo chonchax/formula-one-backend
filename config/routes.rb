@@ -15,8 +15,8 @@ Rails.application.routes.draw do
         end
       end
       resources :teams, only: [ :index, :show ]
-      resources :races, only: [:index] do
-        resources :race_editions, only: [:index]
+      resources :races, only: [ :index ] do
+        resources :race_editions, only: [ :index ]
       end
 
       resources :race_editions, only: [] do

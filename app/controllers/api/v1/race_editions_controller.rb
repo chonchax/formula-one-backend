@@ -5,7 +5,7 @@ class Api::V1::RaceEditionsController < ApplicationController
     page = (params[:page] || 1).to_i
 
     race = Race.find(params[:race_id])
-    pagy_editions, editions = pagy(race.race_editions.order(:season, :race_date), page: , limit: Pagy.options[:items])
+    pagy_editions, editions = pagy(race.race_editions.order(:season, :race_date), page:, limit: Pagy.options[:items])
 
     render json: {
       editions: RaceEditionBlueprint.render_as_hash(editions),
