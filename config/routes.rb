@@ -14,7 +14,9 @@ Rails.application.routes.draw do
           get :ranking
         end
       end
+
       resources :teams, only: [ :index, :show ]
+
       resources :races, only: [ :index ] do
         resources :race_editions, only: [ :index ]
       end
@@ -22,6 +24,8 @@ Rails.application.routes.draw do
       resources :race_editions, only: [] do
         get :results, on: :member
       end
+
+      resources :results, only: [:create, :update, :destroy]
     end
   end
 end
