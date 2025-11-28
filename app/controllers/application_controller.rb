@@ -1,5 +1,3 @@
-require "pagy"
-
 class ApplicationController < ActionController::API
-  include Pagy::Backend
+  include Pagy::Method
 end
