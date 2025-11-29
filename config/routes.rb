@@ -25,7 +25,7 @@ Rails.application.routes.draw do
         get :results, on: :member
       end
 
-      resources :results, only: [:create, :update, :destroy]
+      resources :results, only: [ :create, :update, :destroy ]
     end
   end
 end

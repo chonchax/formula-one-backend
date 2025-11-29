@@ -16,4 +16,36 @@ class Api::V1::TeamsController < ApplicationController
       }
     }, status: :ok
   end
+
+  def create
+    team = Team.new(team_params)
+
+    if team.save
+      render json: TeamBlueprint.render_as_hash(team), status: :created
+    else
+      render json: { error: "Unprocessable Entity", messages: team.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    team = Team.find(params[:id])
+
+    if team.update(team_params)
+      render json: TeamBlueprint.render_as_hash(team), status: :ok
+    else
+      render json: { error: "Unprocessable Entity", messages: team.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    team = Team.find(params[:id])
+    team.destroy
+    head :no_content
+  end
+
+  private
+
+  def team_params
+    params.require(:team).permit(:name, :location)
+  end
 end
