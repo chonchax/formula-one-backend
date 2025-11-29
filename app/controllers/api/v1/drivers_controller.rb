@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Api::V1::DriversController < ApplicationController
+class Api::V1::DriversController < Api::V1::BaseController
+  before_action :authenticate_user!, only: [ :create, :update, :destroy ]
+
   def index
     page = (params[:page] || 1).to_i
 
