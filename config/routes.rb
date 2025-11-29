@@ -17,7 +17,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :teams, only: [ :index, :show ]
+      resources :teams, only: [ :index, :create, :update, :destroy ]
 
       resources :races, only: [ :index ] do
         resources :race_editions, only: [ :index ]
