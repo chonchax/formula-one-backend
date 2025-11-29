@@ -7,7 +7,13 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "http://localhost:5174"
+    allowed_origins = {
+      "development" => [ "http://localhost:5174" ],
+      "staging"     => [ "https://staging.forumla-one.com" ],
+      "production"  => [ "https://www.forumla-one.com" ]
+    }
+
+    origins allowed_origins[Rails.env] || []
 
     resource "*",
              headers: :any,
