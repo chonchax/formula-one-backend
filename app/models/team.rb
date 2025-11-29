@@ -3,5 +3,5 @@ class Team < ApplicationRecord
   has_many :results, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
-  validates :country, presence: true
+  validates :location, presence: true
 end
