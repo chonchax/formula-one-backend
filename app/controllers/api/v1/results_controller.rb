@@ -1,4 +1,8 @@
-class Api::V1::ResultsController < ApplicationController
+# frozen_string_literal: true
+
+class Api::V1::ResultsController < Api::V1::BaseController
+  before_action :authenticate_user!, only: [ :create, :update, :destroy ]
+
   def create
     begin
       results = ActiveRecord::Base.transaction do
