@@ -5,8 +5,9 @@ class Api::V1::DriversController < Api::V1::BaseController
 
   def index
     page = (params[:page] || 1).to_i
+    limit = (params[:limit] || Pagy.options[:items]).to_i
 
-    pagy_drivers, drivers = pagy(Driver.includes(:team).order(:last_name), page: page, limit: Pagy.options[:items])
+    pagy_drivers, drivers = pagy(Driver.includes(:team).order(:last_name), page: page, limit: limit)
 
     render json: {
       drivers: DriverBlueprint.render_as_hash(drivers),
@@ -71,6 +72,6 @@ class Api::V1::DriversController < Api::V1::BaseController
   private
 
   def driver_params
-    params.permit(:first_name, :last_name, :team_id, :nationality, :number, :points)
+    params.permit(:first_name, :last_name, :team_id, :nationality, :number, :limit)
   end
 end
