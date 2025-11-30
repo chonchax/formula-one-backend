@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_29_105534) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_30_084548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -21,7 +21,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_29_105534) do
     t.string "last_name"
     t.string "nationality"
     t.integer "number"
-    t.integer "points"
     t.uuid "team_id", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_drivers_on_team_id"
