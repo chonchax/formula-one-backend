@@ -43,26 +43,26 @@ end
 teams = Team.all.index_by(&:name)
 
 drivers_data = [
-  { first_name: "Max", last_name: "Verstappen", nationality: "Néerlandais", number: 1, team_name: "Red Bull Racing", points: 366 },
-  { first_name: "Yuki", last_name: "Tsunoda", nationality: "Japonais", number: 22, team_name: "Red Bull Racing", points: 28 },
-  { first_name: "Kimi", last_name: "Antonelli", nationality: "Italien", number: 12, team_name: "Mercedes", points: 137 },
-  { first_name: "George", last_name: "Russell", nationality: "Britannique", number: 63, team_name: "Mercedes", points: 294 },
-  { first_name: "Charles", last_name: "Leclerc", nationality: "Monégasque", number: 16, team_name: "Ferrari", points: 226 },
-  { first_name: "Lewis", last_name: "Hamilton", nationality: "Britannique", number: 44, team_name: "Ferrari", points: 152 },
-  { first_name: "Lando", last_name: "Norris", nationality: "Britannique", number: 4, team_name: "McLaren", points: 390 },
-  { first_name: "Oscar", last_name: "Piastri", nationality: "Australien", number: 81, team_name: "McLaren", points: 366 },
-  { first_name: "Fernando", last_name: "Alonso", nationality: "Espagnol", number: 14, team_name: "Aston Martin", points: 40 },
-  { first_name: "Lance", last_name: "Stroll", nationality: "Canadien", number: 18, team_name: "Aston Martin", points: 32 },
-  { first_name: "Franco", last_name: "Colapinto", nationality: "Argentin", number: 43, team_name: "Alpine", points: 0 },
-  { first_name: "Pierre", last_name: "Gasly", nationality: "Français", number: 10, team_name: "Alpine", points: 22 },
-  { first_name: "Esteban", last_name: "Ocon", nationality: "Français", number: 31, team_name: "Haas", points: 32 },
-  { first_name: "Oliver", last_name: "Bearman", nationality: "Britannique", number: 87, team_name: "Haas", points: 41 },
-  { first_name: "Nico", last_name: "Hulkenberg", nationality: "Allemand", number: 27, team_name: "Kick Sauber", points: 49 },
-  { first_name: "Gabriel", last_name: "Bortoleto", nationality: "Brésilien", number: 5, team_name: "Kick Sauber", points: 19 },
-  { first_name: "Alexander", last_name: "Albon", nationality: "Thaïlandais", number: 23, team_name: "Williams", points: 73 },
-  { first_name: "Carlos", last_name: "Sainz", nationality: "Espagnol", number: 55, team_name: "Williams", points: 48 },
-  { first_name: "Liam", last_name: "Lawson", nationality: "Néo-zélandais", number: 30, team_name: "Racing Bulls", points: 36 },
-  { first_name: "Isack", last_name: "Hadjar", nationality: "Français", number: 6, team_name: "Racing Bulls", points: 51 }
+  { first_name: "Max", last_name: "Verstappen", nationality: "Néerlandais", number: 1, team_name: "Red Bull Racing" },
+  { first_name: "Yuki", last_name: "Tsunoda", nationality: "Japonais", number: 22, team_name: "Red Bull Racing"},
+  { first_name: "Kimi", last_name: "Antonelli", nationality: "Italien", number: 12, team_name: "Mercedes" },
+  { first_name: "George", last_name: "Russell", nationality: "Britannique", number: 63, team_name: "Mercedes" },
+  { first_name: "Charles", last_name: "Leclerc", nationality: "Monégasque", number: 16, team_name: "Ferrari" },
+  { first_name: "Lewis", last_name: "Hamilton", nationality: "Britannique", number: 44, team_name: "Ferrari" },
+  { first_name: "Lando", last_name: "Norris", nationality: "Britannique", number: 4, team_name: "McLaren" },
+  { first_name: "Oscar", last_name: "Piastri", nationality: "Australien", number: 81, team_name: "McLaren" },
+  { first_name: "Fernando", last_name: "Alonso", nationality: "Espagnol", number: 14, team_name: "Aston Martin" },
+  { first_name: "Lance", last_name: "Stroll", nationality: "Canadien", number: 18, team_name: "Aston Martin" },
+  { first_name: "Franco", last_name: "Colapinto", nationality: "Argentin", number: 43, team_name: "Alpine" },
+  { first_name: "Pierre", last_name: "Gasly", nationality: "Français", number: 10, team_name: "Alpine" },
+  { first_name: "Esteban", last_name: "Ocon", nationality: "Français", number: 31, team_name: "Haas" },
+  { first_name: "Oliver", last_name: "Bearman", nationality: "Britannique", number: 87, team_name: "Haas" },
+  { first_name: "Nico", last_name: "Hulkenberg", nationality: "Allemand", number: 27, team_name: "Kick Sauber" },
+  { first_name: "Gabriel", last_name: "Bortoleto", nationality: "Brésilien", number: 5, team_name: "Kick Sauber" },
+  { first_name: "Alexander", last_name: "Albon", nationality: "Thaïlandais", number: 23, team_name: "Williams" },
+  { first_name: "Carlos", last_name: "Sainz", nationality: "Espagnol", number: 55, team_name: "Williams" },
+  { first_name: "Liam", last_name: "Lawson", nationality: "Néo-zélandais", number: 30, team_name: "Racing Bulls" },
+  { first_name: "Isack", last_name: "Hadjar", nationality: "Français", number: 6, team_name: "Racing Bulls" }
 ]
 
 puts "Creating drivers..."
@@ -73,8 +73,7 @@ drivers_data.each do |attrs|
     last_name: attrs[:last_name],
     nationality: attrs[:nationality],
     number: attrs[:number],
-    team: teams[attrs[:team_name]],
-    points: attrs[:points]
+    team: teams[attrs[:team_name]]
   )
   puts "Driver #{attrs[:first_name]} #{attrs[:last_name]} created."
 end
