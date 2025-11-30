@@ -22,10 +22,17 @@ class Api::V1::DriversController < Api::V1::BaseController
   def ranking
     page = (params[:page] || 1).to_i
 
-    pagy_drivers, drivers = pagy(Driver.includes(:team).order(points: :desc), page: page, limit: Pagy.options[:items])
+    ranked = Driver
+      .left_joins(:results)
+      .select("drivers.*, COALESCE(SUM(results.points),0) AS total_points")
+      .group("drivers.id")
+      .includes(:team)
+      .order(Arel.sql("COALESCE(SUM(results.points),0) DESC"))
+
+    pagy_drivers, drivers = pagy(ranked, page: page, limit: Pagy.options[:items])
 
     render json: {
-      drivers: DriverBlueprint.render_as_hash(drivers),
+      drivers: DriverBlueprint.render_as_hash(drivers, view: :with_points),
       pagy: {
         page: pagy_drivers.page,
         per_page: pagy_drivers.limit,
