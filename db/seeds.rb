@@ -44,7 +44,7 @@ teams = Team.all.index_by(&:name)
 
 drivers_data = [
   { first_name: "Max", last_name: "Verstappen", nationality: "Néerlandais", number: 1, team_name: "Red Bull Racing" },
-  { first_name: "Yuki", last_name: "Tsunoda", nationality: "Japonais", number: 22, team_name: "Red Bull Racing"},
+  { first_name: "Yuki", last_name: "Tsunoda", nationality: "Japonais", number: 22, team_name: "Red Bull Racing" },
   { first_name: "Kimi", last_name: "Antonelli", nationality: "Italien", number: 12, team_name: "Mercedes" },
   { first_name: "George", last_name: "Russell", nationality: "Britannique", number: 63, team_name: "Mercedes" },
   { first_name: "Charles", last_name: "Leclerc", nationality: "Monégasque", number: 16, team_name: "Ferrari" },

@@ -11,5 +11,4 @@ class Driver < ApplicationRecord
   def total_points
     results.sum(:points)
   end
-
 end
