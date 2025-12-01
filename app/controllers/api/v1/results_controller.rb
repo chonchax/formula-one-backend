@@ -5,7 +5,7 @@ class Api::V1::ResultsController < Api::V1::BaseController
 
   def create
     begin
-      results = ActiveRecord::Base.transaction do
+      results = ApplicationRecord.transaction do
         edition = RaceEdition.find_or_create_by!(
           race_id: params[:race_id],
           season: params[:season],
@@ -39,7 +39,14 @@ class Api::V1::ResultsController < Api::V1::BaseController
 
   def destroy
     edition = RaceEdition.find(params[:race_edition_id])
-    edition.destroy
+    if params[:driver_id].present?
+      result = edition.results.find_by!(driver_id: params[:driver_id])
+      result.destroy if result.present?
+      edition.destroy if edition.results.empty?
+    else
+      edition.destroy
+    end
+
     head :no_content
   end
 
