@@ -15,6 +15,7 @@ module Results
         points: params[:points],
         best_lap_time: params[:best_lap_time]
       )
+      result
     end
   end
 end

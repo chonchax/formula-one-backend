@@ -22,13 +22,16 @@ class Api::V1::DriversController < Api::V1::BaseController
 
   def ranking
     page = (params[:page] || 1).to_i
+    season = params[:season]
 
-    ranked = Driver
-      .left_joins(:results)
-      .select("drivers.*, COALESCE(SUM(results.points),0) AS total_points")
-      .group("drivers.id")
-      .includes(:team)
-      .order(Arel.sql("COALESCE(SUM(results.points),0) DESC"))
+    query = Driver.left_joins(results: :race_edition)
+                  .select("drivers.*, COALESCE(SUM(results.points), 0) AS total_points")
+                  .group("drivers.id")
+                  .includes(:team)
+
+    query = query.where(race_editions: { season: season }) if season.present?
+
+    ranked = query.order(Arel.sql("COALESCE(SUM(results.points), 0) DESC"))
 
     pagy_drivers, drivers = pagy(ranked, page: page, limit: Pagy.options[:items])
 
