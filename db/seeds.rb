@@ -9,14 +9,17 @@
 #   end
 
 ## --- RESET ---
+User.destroy_all
 Result.destroy_all
 RaceEdition.destroy_all
 Race.destroy_all
 Driver.destroy_all
 Team.destroy_all
 
-
 puts "Database cleaned."
+
+## Seed User
+User.create!(email: "yann@test.fr", password: "123456")
 
 ## Seed Teams
 teams_data = [
