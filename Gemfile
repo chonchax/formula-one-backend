@@ -39,7 +39,7 @@ gem "rack-cors"
 gem "blueprinter"
 
 # Pagination
-gem "pagy", "~> 43.1"
+gem "pagy", "~> 43.2"
 
 # Authentication
 gem "devise"
